@@ -48,9 +48,13 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        //$request から content を取り出して、新規作成したメッセージに代入し、保存します。
+        $this->validate($request, [
+            'content' => 'required|max:255',
+            ]);
+
         $task = new Task;
         $task->content = $request->content;
+        $task->status = $request->status;
         $task->save();
         
         return redirect('/');
@@ -96,8 +100,13 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+        'content'=> 'required|max:255',
+        ]);
+            
         $task = Task::find($id);
         $task->content = $request->content;
+        $task->status = $request->status;
         $task->save();
         
         return redirect('/');
