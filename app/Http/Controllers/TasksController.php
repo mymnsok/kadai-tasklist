@@ -27,12 +27,9 @@ public function index()
                 'user' => $user,
                 'tasks' => $tasks,
             ];
-
-//\dd($data);
-            
-
-            return view('tasks.index', $data);
         }
+            return view('tasks.index', $data);
+
     }
 
     /**
