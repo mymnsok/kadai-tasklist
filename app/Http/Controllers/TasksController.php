@@ -54,11 +54,14 @@ public function index()
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
+            'status' => 'required',
             'content' => 'required|max:255',
             ]);
 
         $request->user()->tasks()->create([
+            'status' => $request->status,
             'content' => $request->content,
         ]);
         
