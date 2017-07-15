@@ -131,10 +131,10 @@ public function index()
     {
         $task = Task::find($id);
         
-    if (\Auth::user()->id === $task->user_id) {
+    if (\Auth::user()->id === (int)$task->user_id) {
             $task->delete();
         }
-        
+
         return redirect('/');
     }
 }
