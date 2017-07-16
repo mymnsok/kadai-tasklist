@@ -78,9 +78,16 @@ public function index()
     {
         $task = Task::find($id);
 
+    if (\Auth::user()->id === (int)$task->user_id) {
+        
         return view('tasks.show',[
             'task' => $task,
             ]);
+        }
+
+        return redirect('/');
+        
+
     }
 
     /**

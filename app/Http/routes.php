@@ -33,5 +33,6 @@ Route::get('logout', 'Auth\AuthController@getLogout')->name('logout.get');
 
 //認証後のみアクセス可能
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('tasks', 'TasksController', ['only' => ['show']]);
+    Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+    Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]);
 });
